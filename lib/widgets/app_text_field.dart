@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vortex/constants.dart';
 
 class AppTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -9,20 +10,24 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: TextStyle(color: Colors.white),
       controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: TextStyle(color: const Color.fromARGB(96, 174, 174, 174)),
+        labelText: hintText,
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide( color: Colors.white)
+          borderSide: BorderSide( 
+            style: BorderStyle.none
+            )
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.white
           )
         ),
-        fillColor: Colors.grey.shade200,
+        // floatingLabelStyle: TextStyle( color: Colors.red),
+        labelStyle: TextStyle( color: Colors.white, fontWeight: FontWeight.w500),
+        fillColor: Colors.transparent,
         filled: true
       ),
     );

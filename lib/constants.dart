@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 const colorBG = Color.fromARGB(255, 15, 15, 15);
 const colorDrawer = Color.fromARGB(255, 34, 9, 49);
+const colorMainPurple = Colors.deepPurple;
+const colorMainBlue = Colors.blueAccent;
 
 const postsJson = [
   {

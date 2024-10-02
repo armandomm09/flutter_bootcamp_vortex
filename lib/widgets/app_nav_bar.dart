@@ -1,5 +1,6 @@
-
 import 'package:flutter/material.dart';
+import 'package:vortex/auth/auth.dart';
+import 'package:vortex/auth/login_and_register_service.dart';
 import 'package:vortex/constants.dart';
 import 'package:vortex/pages/home_page.dart';
 import 'package:vortex/pages/new_post_page.dart';
@@ -20,6 +21,8 @@ class _MyNavBarState extends State<MyNavBar> {
     const ProfilePage(),
   ];
 
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,30 +31,33 @@ class _MyNavBarState extends State<MyNavBar> {
         title: const Text(
           "VORTEX",
           style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 24, // Tamaño de fuente más grande para el título
-            color: Color.fromARGB(
-                255, 135, 0, 180), // Morado fuerte para el título
-          ),
+              fontWeight: FontWeight.bold,
+              fontSize: 24, // Tamaño de fuente más grande para el título
+              color: colorMainPurple // Morado fuerte para el título
+              ),
         ),
         centerTitle: true, // Centrar el título
-        backgroundColor:
-            colorBG, // Hacer transparente el fondo del AppBar
+        shadowColor: colorBG,
+        scrolledUnderElevation: 10,
+        backgroundColor: colorBG, // Hacer transparente el fondo del AppBar
         elevation: 0, // Sin sombra
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                    color: Colors.blueAccent,
-                    width: 2), // Añadir borde para resaltar la imagen de perfil
-                image: const DecorationImage(
-                  image: AssetImage("assets/profilepic.jpg"),
-                  fit: BoxFit.cover,
+            child: GestureDetector(
+              onTap: FirebaseLoginService.signOut,
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                      color: Colors.blueAccent,
+                      width: 2), // Añadir borde para resaltar la imagen de perfil
+                  image: const DecorationImage(
+                    image: AssetImage("assets/profilepic.jpg"),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
@@ -61,7 +67,7 @@ class _MyNavBarState extends State<MyNavBar> {
       body: _screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: colorBG,
-        selectedItemColor: Colors.deepPurple,
+        selectedItemColor: colorMainPurple,
         unselectedItemColor: Colors.grey,
         currentIndex: currentIndex,
         onTap: (index) {
@@ -82,7 +88,6 @@ class _MyNavBarState extends State<MyNavBar> {
             icon: Icon(Icons.shop),
             label: 'Profile',
           ),
-         
         ],
       ),
     );

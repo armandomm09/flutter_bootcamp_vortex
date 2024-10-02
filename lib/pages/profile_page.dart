@@ -39,7 +39,7 @@ class ProfilePage extends StatelessWidget {
                     gradient: LinearGradient(
                       begin: Alignment.bottomCenter,
                       end: Alignment.topCenter,
-                        colors: [colorBG, Colors.transparent]),
+                        colors: [colorBG, Colors.transparent,Colors.transparent,Colors.transparent, colorBG,]),
                   )),
                   // Profile avatar
                   const Positioned(
